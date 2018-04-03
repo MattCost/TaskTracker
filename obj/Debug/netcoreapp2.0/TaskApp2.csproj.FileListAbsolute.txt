@@ -1,0 +1,10 @@
+C:\Users\mcosturos.ASGINTERNAL\Documents\dotnetapps\TaskApp2\bin\Debug\netcoreapp2.0\TaskApp2.deps.json
+C:\Users\mcosturos.ASGINTERNAL\Documents\dotnetapps\TaskApp2\bin\Debug\netcoreapp2.0\TaskApp2.runtimeconfig.json
+C:\Users\mcosturos.ASGINTERNAL\Documents\dotnetapps\TaskApp2\bin\Debug\netcoreapp2.0\TaskApp2.runtimeconfig.dev.json
+C:\Users\mcosturos.ASGINTERNAL\Documents\dotnetapps\TaskApp2\bin\Debug\netcoreapp2.0\TaskApp2.dll
+C:\Users\mcosturos.ASGINTERNAL\Documents\dotnetapps\TaskApp2\bin\Debug\netcoreapp2.0\TaskApp2.pdb
+C:\Users\mcosturos.ASGINTERNAL\Documents\dotnetapps\TaskApp2\obj\Debug\netcoreapp2.0\TaskApp2.csproj.CoreCompileInputs.cache
+C:\Users\mcosturos.ASGINTERNAL\Documents\dotnetapps\TaskApp2\obj\Debug\netcoreapp2.0\TaskApp2.AssemblyInfoInputs.cache
+C:\Users\mcosturos.ASGINTERNAL\Documents\dotnetapps\TaskApp2\obj\Debug\netcoreapp2.0\TaskApp2.AssemblyInfo.cs
+C:\Users\mcosturos.ASGINTERNAL\Documents\dotnetapps\TaskApp2\obj\Debug\netcoreapp2.0\TaskApp2.dll
+C:\Users\mcosturos.ASGINTERNAL\Documents\dotnetapps\TaskApp2\obj\Debug\netcoreapp2.0\TaskApp2.pdb
