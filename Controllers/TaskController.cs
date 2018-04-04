@@ -24,6 +24,41 @@ namespace TaskApp2.Controllers
             return View(await _context.Task.ToListAsync());
         }
 
+        // GET: Task/SetComplete/5
+        public async Task<IActionResult> SetComplete(int? id)
+        {
+            if(id != null)
+            {
+                var task = await _context.Task
+                    .SingleOrDefaultAsync(m=> m.ID == id);
+                if(task != null)
+                {
+                    task.Complete = true;
+                    if (ModelState.IsValid)
+                    {
+                        try
+                        {
+                            _context.Update(task);
+                            await _context.SaveChangesAsync();
+                        }
+                        catch (DbUpdateConcurrencyException)
+                        {
+                            if (!TaskExists(task.ID))
+                            {
+                                return NotFound();
+                            }
+                            else
+                            {
+                                throw;
+                            }
+                        }
+                    }
+                }
+            }
+            return RedirectToAction(nameof(Index));
+            
+
+        }
         // GET: Task/Details/5
         public async Task<IActionResult> Details(int? id)
         {

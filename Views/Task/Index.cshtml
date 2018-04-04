@@ -37,6 +37,7 @@
                 @Html.DisplayFor(modelItem => item.Complete)
             </td>
             <td>
+                <a asp-action="SetComplete" asp-route-id="@item.ID">Mark As Complete</a> |
                 <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
