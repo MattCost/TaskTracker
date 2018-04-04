@@ -32,7 +32,31 @@
             @Html.DisplayNameFor(model => model.RepeatFreq)
         </dt>
         <dd>
-            <select asp-for="RepeatFreq" asp-items="Html.GetEnumSelectList<RepeatFrequency>()"></select>
+            <select asp-for="RepeatFreq" asp-items="Html.GetEnumSelectList<RepeatFrequencyEnum>()"></select>
+        </dd>
+        <dt>
+            @{
+                if (Model.RepeatFreq == RepeatFrequencyEnum.Daily) {
+                    @Html.Raw("Daily Task - no schedule needed");
+                }
+                if (Model.RepeatFreq == RepeatFrequencyEnum.Weekdays) {
+                    @Html.Raw("Weekday Task - no schedule needed");
+                }
+                if (Model.RepeatFreq == RepeatFrequencyEnum.Weekends) {
+                    @Html.Raw("Weekend Task - no schedule needed");
+                }
+                if (Model.RepeatFreq == RepeatFrequencyEnum.Weekly) {
+                    @Html.Raw("Weekly Task  - Day of Week needed");
+                }
+            }
+             
+        </dt>
+        <dd>
+            @if (Model.RepeatFreq == RepeatFrequencyEnum.Weekly) {
+                @Html.DisplayFor(model => model.SelectedDay);
+            }
+            
+
         </dd>
     </dl>
 </div>

@@ -3,8 +3,21 @@
 @{
     ViewData["Title"] = "Edit";
 }
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+ <script type="text/javascript">
+ $(function(){
+     console.log("ready!");
+     DivHide()
+ });
+
+</script>
 
 <h2>Edit</h2>
+
+<button id="btnHide" onclick="DivHide()">Hide</button>
+<button id="btnShow" onclick="DivShow()">Show</button>
+
 
 <h4>Task</h4>
 <hr />
@@ -31,6 +44,13 @@
                 </div>
             </div>
             <div class="form-group">
+                <select asp-for="RepeatFreq" asp-items="Html.GetEnumSelectList<RepeatFrequencyEnum>()"></select>
+            </div>
+            <div id="divDayOfWeek" class="form-group">
+                <select asp-for="SelectedDay" asp-items="Html.GetEnumSelectList<DayOfWeek>()"></select>
+            </div>
+
+            <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </form>
@@ -44,3 +64,13 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+
+ <script type="text/javascript">
+ function DivHide(){
+       $("#divDayOfWeek").hide(100);
+ }
+
+ function DivShow(){
+      $("#divDayOfWeek").show();
+ }
+  </script>
