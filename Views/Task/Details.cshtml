@@ -28,6 +28,12 @@
         <dd>
             @Html.DisplayFor(model => model.Complete)
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RepeatFreq)
+        </dt>
+        <dd>
+            <select asp-for="RepeatFreq" asp-items="Html.GetEnumSelectList<RepeatFrequency>()"></select>
+        </dd>
     </dl>
 </div>
 <div>
