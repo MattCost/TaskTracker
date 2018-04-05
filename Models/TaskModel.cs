@@ -7,21 +7,21 @@ namespace TaskApp2
     public enum RepeatFrequencyEnum
     {
         [Display(Name = "Every Day")]
-        Daily,
+        Daily=1,
         [Display(Name = "Weekdays (M-F)")]
-        Weekdays,
+        Weekdays=2,
         [Display(Name = "Weekends (S+S+)")]
-        Weekends,
+        Weekends=3,
         [Display(Name = "One day a week")]
-        Weekly,
+        Weekly=4,
         [Display(Name = "One day every other week")]
-        BiWeekly,
+        BiWeekly=5,
         [Display(Name = "One day a Month")]
-        Monthly,
+        Monthly=6,
      //   [Display(Name = "One day a Quarter")]
        // Quartly,
         [Display(Name = "One day a Year")]
-        Yearly
+        Yearly=7
     }
 }
 namespace TaskApp2.Models
