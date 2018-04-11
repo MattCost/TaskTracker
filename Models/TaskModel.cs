@@ -46,4 +46,24 @@ namespace TaskApp2.Models
             Yearly - will use day of year (1-365) and date for the first occurance
         */
     }
+
+    public class TaskTemplate
+    {
+        public int ID {get; set;}
+        public string Name{get;set;}
+        public string Desc{get;set;}
+        public RepeatFrequencyEnum RepeatFreq {get;set;} //how often
+        public DayOfWeek SelectedDay {get; set;} //day of the week for Weekly tasks
+        public DateTime FirstDay {get;set;} //the day used for the base of the repatition.
+    }
+
+    public class TaskInstance{
+        public int ID {get; set;}
+        public string Name{get; set;}
+        public string Desc {get; set;}
+        public bool Complete { get; set;}
+        public DateTime TaskDate {get; set;}
+
+    }
+
 }

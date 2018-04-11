@@ -1,0 +1,60 @@
+@model TaskApp2.Models.TaskTemplate
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Task Template</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Desc)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Desc)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RepeatFreq)
+        </dt>
+        <dd>
+            <select asp-for="RepeatFreq" asp-items="Html.GetEnumSelectList<RepeatFrequencyEnum>()"></select>
+        </dd>
+        <dt>
+            @{
+                if (Model.RepeatFreq == RepeatFrequencyEnum.Daily) {
+                    @Html.Raw("Daily Task - no schedule needed");
+                }
+                if (Model.RepeatFreq == RepeatFrequencyEnum.Weekdays) {
+                    @Html.Raw("Weekday Task - no schedule needed");
+                }
+                if (Model.RepeatFreq == RepeatFrequencyEnum.Weekends) {
+                    @Html.Raw("Weekend Task - no schedule needed");
+                }
+                if (Model.RepeatFreq == RepeatFrequencyEnum.Weekly) {
+                    @Html.Raw("Weekly Task  - Day of Week needed");
+                }
+            }
+             
+        </dt>
+        <dd>
+            @if (Model.RepeatFreq == RepeatFrequencyEnum.Weekly) {
+                @Html.DisplayFor(model => model.SelectedDay);
+            }
+            
+
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

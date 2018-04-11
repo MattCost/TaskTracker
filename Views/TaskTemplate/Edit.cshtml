@@ -1,0 +1,97 @@
+@model TaskApp2.Models.TaskTemplate
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+ <script type="text/javascript">
+ $(function(){
+    var selected_freq= $( "#RepeatFreq option:selected" ).val();
+    if(selected_freq == @((int)TaskApp2.RepeatFrequencyEnum.Weekly) )
+    {
+        DivShow();
+    }
+    else
+    {
+        DivHide();
+    }
+     
+     $('#RepeatFreq').on('change',function()
+     {
+        var selected_freq= $( "#RepeatFreq option:selected" ).val();
+        if( (selected_freq == @((int)TaskApp2.RepeatFrequencyEnum.Weekly) ) | (selected_freq == @((int)TaskApp2.RepeatFrequencyEnum.BiWeekly) ) ) 
+        {
+            DivShow();
+        }
+        else
+        {
+            DivHide();
+        }
+     });
+ });
+
+</script>
+
+<h2>Edit</h2>
+
+<button id="btnHide" onclick="DivHide()">Hide</button>
+<button id="btnShow" onclick="DivShow()">Show</button>
+
+
+<h4>Task</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ID" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Desc" class="control-label"></label>
+                <input asp-for="Desc" class="form-control" />
+                <span asp-validation-for="Desc" class="text-danger"></span>
+            </div>
+    
+            <div id="divSelectFreq" class="form-group">
+                <select asp-for="RepeatFreq" asp-items="Html.GetEnumSelectList<RepeatFrequencyEnum>()"></select>
+            </div>
+            @{
+                string stylestring=String.Empty;
+                if(Model.RepeatFreq == RepeatFrequencyEnum.Weekly ){
+                    stylestring = "display: block;";
+                }else{
+                    stylestring ="display: none;";
+                }
+                <div id="divDayOfWeek" class="form-group" style="@stylestring">
+                    <select asp-for="SelectedDay" asp-items="Html.GetEnumSelectList<DayOfWeek>()"></select>
+                </div>
+            }
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+ <script type="text/javascript">
+ function DivHide(){
+       $("#divDayOfWeek").hide(250);
+ }
+
+ function DivShow(){
+      $("#divDayOfWeek").show(250);
+ }
+  </script>
