@@ -17,7 +17,7 @@ namespace TaskApp2.Models
         public DateTime TaskTemplateUpdate;
         public DateTime TaskListUpdate;
 
-        
+         //https://benjii.me/2014/03/track-created-and-modified-fields-automatically-with-entity-framework-code-first/
 
     }
 }
