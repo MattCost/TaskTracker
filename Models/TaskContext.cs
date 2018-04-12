@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace TaskApp2.Models
 {
@@ -10,9 +11,12 @@ namespace TaskApp2.Models
         }
 
         public DbSet<TaskApp2.Models.Task> Task { get; set; }
-
         public DbSet<TaskApp2.Models.TaskTemplate> TaskTemplate {get;set;}
         public DbSet<TaskApp2.Models.TaskInstance> TaskList {get; set;}
+
+        public DateTime TaskTemplateUpdate;
+        public DateTime TaskListUpdate;
+
         
 
     }
