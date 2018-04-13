@@ -56,7 +56,6 @@ namespace TaskApp2.Controllers
                 }
             }
             return RedirectToAction(nameof(Index));
-            
 
         }
         // GET: Task/Details/5

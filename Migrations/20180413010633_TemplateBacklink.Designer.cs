@@ -12,9 +12,10 @@ using TaskApp2.Models;
 namespace TaskApp2.Migrations
 {
     [DbContext(typeof(TaskContext))]
-    partial class TaskContextModelSnapshot : ModelSnapshot
+    [Migration("20180413010633_TemplateBacklink")]
+    partial class TemplateBacklink
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

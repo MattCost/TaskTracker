@@ -4,6 +4,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace TaskApp2
 {
+
+
     public enum RepeatFrequencyEnum
     {
         [Display(Name = "Every Day")]
@@ -27,6 +29,14 @@ namespace TaskApp2
 namespace TaskApp2.Models
 {
 
+    public class BaseEntity
+    {
+        public DateTime? DateCreated { get; set; }
+    //    public string UserCreated { get; set; }
+        public DateTime? DateModified { get; set; }
+    //    public string UserModified { get; set; }
+    }
+
     public class Task
     {
         public int ID {get; set;}
@@ -47,7 +57,7 @@ namespace TaskApp2.Models
         */
     }
 
-    public class TaskTemplate
+    public class TaskTemplate : BaseEntity
     {
         public int ID {get; set;}
         public string Name{get;set;}
@@ -57,11 +67,15 @@ namespace TaskApp2.Models
         public DateTime FirstDay {get;set;} //the day used for the base of the repatition.
     }
 
-    public class TaskInstance{
+    public class TaskInstance : BaseEntity
+    {
         public int ID {get; set;}
+
+        public int TemplateID {get; set;}
         public string Name{get; set;}
         public string Desc {get; set;}
         public bool Complete { get; set;}
+        [DataType(DataType.Date)]
         public DateTime TaskDate {get; set;}
 
     }

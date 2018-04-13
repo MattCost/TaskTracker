@@ -12,9 +12,10 @@ using TaskApp2.Models;
 namespace TaskApp2.Migrations
 {
     [DbContext(typeof(TaskContext))]
-    partial class TaskContextModelSnapshot : ModelSnapshot
+    [Migration("20180413002735_TimeStampTracking")]
+    partial class TimeStampTracking
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -58,8 +59,6 @@ namespace TaskApp2.Migrations
                     b.Property<string>("Name");
 
                     b.Property<DateTime>("TaskDate");
-
-                    b.Property<int>("TemplateID");
 
                     b.HasKey("ID");
 

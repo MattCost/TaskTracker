@@ -58,7 +58,6 @@ namespace TaskApp2.Controllers
             if (ModelState.IsValid)
             {
                 _context.Add(task);
-                _context.TaskTemplateUpdate = DateTime.Now;
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
@@ -98,7 +97,7 @@ namespace TaskApp2.Controllers
                 try
                 {
                     _context.Update(task);
-                    _context.TaskTemplateUpdate = DateTime.Now;
+                    
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -142,7 +141,6 @@ namespace TaskApp2.Controllers
         {
             var task = await _context.TaskTemplate.SingleOrDefaultAsync(m => m.ID == id);
             _context.TaskTemplate.Remove(task);
-            _context.TaskTemplateUpdate = DateTime.Now;
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
