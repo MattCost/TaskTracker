@@ -12,6 +12,24 @@ namespace TaskApp2.Controllers
     public class TaskListController : Controller
     {
         private readonly TaskContext _context;
+        protected void UpdateTaskList(){
+            //for each task, if the template ID timestamp is newer than task timestamp, then update the list.
+                //do we update the task if it was already completed?
+                //for now - no.
+            foreach (var TaskInstance in _context.TaskList)
+            {
+                var TemplateTask = _context.TaskTemplate.First( temp => temp.ID == TaskInstance.TemplateID);
+                if( TemplateTask != null){
+                    if( (TemplateTask.DateModified > TaskInstance.DateModified) && (!TaskInstance.Complete) )
+                    {
+                        //update the task since the template is newer
+                        TaskInstance.Name = TemplateTask.Name;
+                        TaskInstance.Desc = TemplateTask.Desc;
+                    }
+                }
+            }
+
+        }
         protected void GenerateTaskList()
         {
 
@@ -24,9 +42,10 @@ namespace TaskApp2.Controllers
             }
             //Clear the task list
             //well maybe not completed tasks.
-            //so this is stupid - can any template update will regen all tasks.
+            //so this is stupid - any template update will regen all tasks.
             //i should make it smart 
             //for any task in the list, if the parenttemplet id is gone - delete that task.
+
             //for every template, get all the tasks with matching ids, if template is newer - update the list
             DayOfWeek Today = DateTime.Now.DayOfWeek;
             foreach (var entity in _context.TaskList)
